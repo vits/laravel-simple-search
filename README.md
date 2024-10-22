@@ -1,8 +1,8 @@
 # Simple search scope for Laravel models
 
-Search for words in one or more text fields (`string` or `text`) using one of provided search strategies.
+Search for words in one or more text fields (`string` or `text`) using provided search strategies.
 
-Search query is split into words and each of these words must match at least one of given fields. Each field may have different search strategy.
+Search query string is split into words and each of these words must match at least one of given fields. Each field may have different search strategy.
 
 **NB: Some of search strategies may work only with MySQL database driver.**
 
@@ -14,7 +14,7 @@ composer require vits/laravel-simple-search
 
 ## Usage
 
-`SimpleSearch` trait adds `simpleSearch` scope. Scope accepts search query and optional list of fields to be searched. Fields and default search strategy may be configured as model properties.
+`SimpleSearch` model trait adds `simpleSearch` scope. Scope accepts search query string and optional list of fields to be searched. Searched fields and default search strategy may also be configured as model properties.
 
 ```php
 use Vits\LaravelSimpleSearch\SimpleSearch;
@@ -48,8 +48,7 @@ This ir default strategy.
 
 This may be used both in `simpleSearch` scope and as model property.
 
-If field definition does not assign search strategy, `simpleSearchStategy` value or
-default strategy is used.
+If field definition does not assign search strategy, value of model property `simpleSearchStategy` is used as default strategy. If not set, `SimpleSearch::START_OF_WORDS` is default search strategy.
 
 ```php
 # single field
